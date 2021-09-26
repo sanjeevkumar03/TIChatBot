@@ -136,7 +136,6 @@
 		D9CE8B3026FF15640027D01D /* Assistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CE8B2F26FF15640027D01D /* Assistent.swift */; };
 		D9CE8B3326FF16C10027D01D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9CE8B3126FF16AC0027D01D /* Assets.xcassets */; };
 		D9CE8B3526FF18170027D01D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9CE8B3426FF18170027D01D /* WebKit.framework */; };
-		D9CE8B3726FF18AD0027D01D /* Assets.xcassets in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9CE8B3126FF16AC0027D01D /* Assets.xcassets */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		D9CE8B4E26FF19A20027D01D /* sha1.js in Resources */ = {isa = PBXBuildFile; fileRef = D9CE8B3A26FF19A20027D01D /* sha1.js */; };
 		D9CE8B4F26FF19A20027D01D /* sha256.js in Resources */ = {isa = PBXBuildFile; fileRef = D9CE8B3B26FF19A20027D01D /* sha256.js */; };
 		D9CE8B5026FF19A20027D01D /* aes.js in Resources */ = {isa = PBXBuildFile; fileRef = D9CE8B3C26FF19A20027D01D /* aes.js */; };
@@ -157,6 +156,12 @@
 		D9CE8B5F26FF19A20027D01D /* mode-ctr.js in Resources */ = {isa = PBXBuildFile; fileRef = D9CE8B4B26FF19A20027D01D /* mode-ctr.js */; };
 		D9CE8B6026FF19A20027D01D /* sha224.js in Resources */ = {isa = PBXBuildFile; fileRef = D9CE8B4C26FF19A20027D01D /* sha224.js */; };
 		D9CE8B6126FF19A20027D01D /* CryptoJS.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CE8B4D26FF19A20027D01D /* CryptoJS.swift */; };
+		D9CE8B65270084600027D01D /* user1.png in Resources */ = {isa = PBXBuildFile; fileRef = D9CE8B62270084600027D01D /* user1.png */; };
+		D9CE8B66270084600027D01D /* user1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9CE8B63270084600027D01D /* user1@2x.png */; };
+		D9CE8B67270084600027D01D /* user1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9CE8B64270084600027D01D /* user1@3x.png */; };
+		D9CE8B68270084840027D01D /* user1.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9CE8B62270084600027D01D /* user1.png */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D9CE8B69270084840027D01D /* user1@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9CE8B63270084600027D01D /* user1@2x.png */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		D9CE8B6A270084840027D01D /* user1@3x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9CE8B64270084600027D01D /* user1@3x.png */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -164,9 +169,11 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolderSpec = 7;
 			files = (
-				D9CE8B3726FF18AD0027D01D /* Assets.xcassets in CopyFiles */,
+				D9CE8B68270084840027D01D /* user1.png in CopyFiles */,
+				D9CE8B69270084840027D01D /* user1@2x.png in CopyFiles */,
+				D9CE8B6A270084840027D01D /* user1@3x.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +332,9 @@
 		D9CE8B4B26FF19A20027D01D /* mode-ctr.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "mode-ctr.js"; sourceTree = "<group>"; };
 		D9CE8B4C26FF19A20027D01D /* sha224.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sha224.js; sourceTree = "<group>"; };
 		D9CE8B4D26FF19A20027D01D /* CryptoJS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoJS.swift; sourceTree = "<group>"; };
+		D9CE8B62270084600027D01D /* user1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user1.png; sourceTree = "<group>"; };
+		D9CE8B63270084600027D01D /* user1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user1@2x.png"; sourceTree = "<group>"; };
+		D9CE8B64270084600027D01D /* user1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user1@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -418,6 +428,9 @@
 				D9CE8B1B26FF15540027D01D /* SSOWebVCViewController.swift */,
 				D9CE8B2226FF15550027D01D /* XMPPController.swift */,
 				D9CE8B2F26FF15640027D01D /* Assistent.swift */,
+				D9CE8B62270084600027D01D /* user1.png */,
+				D9CE8B63270084600027D01D /* user1@2x.png */,
+				D9CE8B64270084600027D01D /* user1@3x.png */,
 				D9CE8B3126FF16AC0027D01D /* Assets.xcassets */,
 				D9CE8A8A26FF152D0027D01D /* MessageInputBar */,
 				D9CE8A9B26FF152E0027D01D /* MessageKit */,
@@ -819,7 +832,9 @@
 			files = (
 				D9CE8A4526FF14DB0027D01D /* CarouselCollectionViewCell.xib in Resources */,
 				D9CE8B5D26FF19A20027D01D /* sha3.js in Resources */,
+				D9CE8B66270084600027D01D /* user1@2x.png in Resources */,
 				D9CE8B4F26FF19A20027D01D /* sha256.js in Resources */,
+				D9CE8B67270084600027D01D /* user1@3x.png in Resources */,
 				D9CE8A3A26FF14DB0027D01D /* PropsCollectionViewCell.xib in Resources */,
 				D9CE8B0126FF152E0027D01D /* ButtonCell.xib in Resources */,
 				D9CE8A4826FF14DB0027D01D /* CollectionViewCell.xib in Resources */,
@@ -841,6 +856,7 @@
 				D9CE8B5826FF19A20027D01D /* pad-zeropadding.js in Resources */,
 				D9CE8A3726FF14DB0027D01D /* ChoiceTableViewCell.xib in Resources */,
 				D9CE8A3F26FF14DB0027D01D /* BottomCollectionViewCell.xib in Resources */,
+				D9CE8B65270084600027D01D /* user1.png in Resources */,
 				D9CE8A4426FF14DB0027D01D /* OptionCollectionViewCell.xib in Resources */,
 				D9CE8B5F26FF19A20027D01D /* mode-ctr.js in Resources */,
 				D9CE8A1226FF146A0027D01D /* AnsTagsCollectionViewCell.xib in Resources */,
