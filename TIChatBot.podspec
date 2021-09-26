@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
     This library helps in in resolving queries by chatting with virtual assistant and live agents.
                         DESC
     # 2
-    spec.version      = "0.0.3"
+    spec.version      = "0.0.4"
     # 3
     spec.license      = { :type => "MIT", :file => "LICENSE" }
     # 4
@@ -36,8 +36,8 @@ Pod::Spec.new do |spec|
     spec.source_files  = "TIChatBot/**/*.{h,m,swift}"
     #spec.source_files = '**/Classes/**/*.{h,m,swift}'
     # 9
-    spec.resources = "TIChatBot/Resources/*{png,jpeg,jpg,storyboard,xib,xcassets,framework,bundle}"
-    #spec.resources = "**/Classes/**/*.{png,jpeg,jpg,storyboard,xib,xcassets}"
+    spec.resources = "TIChatBot/**/*{png,jpeg,jpg,storyboard,xib,xcassets,framework,bundle}"
+    #spec.resources = "**/Resources/**/*.{png,jpeg,jpg,storyboard,xib,xcassets,framework,bundle}"
 
     # 10
     spec.swift_version = "5.0"
