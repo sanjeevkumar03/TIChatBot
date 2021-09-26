@@ -2,7 +2,7 @@
 Pod::Spec.new do |spec|
     # 1
     spec.platform = :ios
-    spec.ios.deployment_target = '12.2'
+    spec.ios.deployment_target = '13.0'
     spec.name         = "TIChatBot"
     spec.summary      = "TIChatBot framework written in swift."
     spec.requires_arc = true
@@ -11,7 +11,7 @@ Pod::Spec.new do |spec|
     This library helps in in resolving queries by chatting with virtual assistant and live agents.
                         DESC
     # 2
-    spec.version      = "0.0.8"
+    spec.version      = "0.0.9"
     # 3
     spec.license      = { :type => "MIT", :file => "LICENSE" }
     # 4
