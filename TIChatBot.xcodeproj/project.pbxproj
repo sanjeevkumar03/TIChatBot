@@ -164,7 +164,7 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 7;
+			dstSubfolderSpec = 10;
 			files = (
 				D9CE8B3726FF18AD0027D01D /* Assets.xcassets in CopyFiles */,
 			);
