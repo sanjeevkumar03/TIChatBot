@@ -25,7 +25,7 @@
 import UIKit
 
 internal class TextFieldTableViewCell: UITableViewCell {
-
+    
     static let identifier = "TextFieldTableViewCellIdentifier"
     
     var mainLabel = UILabel()

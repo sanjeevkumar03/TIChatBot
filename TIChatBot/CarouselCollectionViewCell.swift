@@ -9,7 +9,7 @@
 import UIKit
 
 class CarouselCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControll: UIPageControl!
@@ -17,7 +17,7 @@ class CarouselCollectionViewCell: UICollectionViewCell {
     var caraouselObjArray:[CarousalObject]?
     var messageList:[MockMessage]?
     var settings:Setting?
-
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,13 +27,14 @@ class CarouselCollectionViewCell: UICollectionViewCell {
         containerView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         self.collectionView.layer.cornerRadius = 10
         self.collectionView.clipsToBounds = true
-    //  self.collectionView.backgroundColor = .clear
+        //  self.collectionView.backgroundColor = .clear
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-
-     // self.collectionView.register(UINib.init(nibName: “CollectionViewCell”, bundle: nil), forCellWithReuseIdentifier: “collectionViewID”)
-        self.collectionView.register(UINib(nibName:"CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
-       
+        
+        // self.collectionView.register(UINib.init(nibName: “CollectionViewCell”, bundle: nil), forCellWithReuseIdentifier: “collectionViewID”)
+        let bundle = Bundle(for: CarouselCollectionViewCell.self)
+        self.collectionView.register(UINib(nibName:"CollectionViewCell", bundle: bundle), forCellWithReuseIdentifier: "CollectionViewCell")
+        
         // Initialization code
     }
     
@@ -71,13 +72,13 @@ extension CarouselCollectionViewCell: UICollectionViewDelegate, UICollectionView
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
         
-      //in this example I added a label named "title" into the MyCollectionCell class
+        //in this example I added a label named "title" into the MyCollectionCell class
         print(self.caraouselObjArray![indexPath.item].text)
-      //  cell.titleLbl.text = self.caraouselObjArray![indexPath.item].text
+        //  cell.titleLbl.text = self.caraouselObjArray![indexPath.item].text
         print(self.caraouselObjArray![indexPath.item])
         cell.configureCell(carouselObj: self.caraouselObjArray![indexPath.item])
         cell.settings = settings
-      // cell.carouselObj = self.caraouselObjArray![indexPath.item]
+        // cell.carouselObj = self.caraouselObjArray![indexPath.item]
         return cell
     }
     
@@ -93,9 +94,9 @@ extension CarouselCollectionViewCell: UICollectionViewDelegate, UICollectionView
         self.pageControll.currentPage = currentPage
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 250, height: 300)
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    //        return CGSize(width: 250, height: 300)
+    //    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10

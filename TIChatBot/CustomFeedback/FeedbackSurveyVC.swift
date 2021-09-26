@@ -24,10 +24,10 @@ class FeedbackSurveyVC: UIViewController {
     @IBOutlet weak var tenButton: UIButton!
     @IBOutlet weak var oneToFiveSV: UIStackView!
     @IBOutlet weak var sixToNineSV: UIStackView!
-
     
-
-
+    
+    
+    
     
     @IBOutlet weak var answerTagsCollView: UICollectionView!
     @IBOutlet weak var answerTagsCollHightConst: NSLayoutConstraint!
@@ -39,14 +39,14 @@ class FeedbackSurveyVC: UIViewController {
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var radioButtonViewContainerHC: NSLayoutConstraint!
-
+    
     @IBOutlet weak var additionalFeedButton: UIButton!
     @IBOutlet weak var feedTextViewContainer: UIView!
     @IBOutlet weak var feedTextView: UITextView!
     @IBOutlet weak var feedTextViewContainerHC: NSLayoutConstraint!
     
     @IBOutlet weak var submitButton: UIButton!
-
+    
     var ansArray = [String]()
     var selectedIndexPath = IndexPath(item: -1, section: -1)
     var selectedTagIndexPath = IndexPath(item: -1, section: -1)
@@ -65,7 +65,7 @@ class FeedbackSurveyVC: UIViewController {
     var selectedAnswerTagValueArr = [String]()
     var score = 0
     var issuResolved = false
-
+    
     
     override func viewDidLoad() {
         self.setRatingScale()
@@ -75,22 +75,25 @@ class FeedbackSurveyVC: UIViewController {
         self.hideRadio()
         self.hideAdditionalFeedback()
         self.addNavTitleImage()
-       // self.navigationController?.navigationBar.isHidden = true
+        // self.navigationController?.navigationBar.isHidden = true
     }
     
     
-           
-   override func viewDidAppear(_ animated: Bool) {
-       super.viewDidAppear(animated)
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     func addNavTitleImage()  {
-        let navHeight = self.navigationController!.navigationBar.frame.size.height - 30
-        let navWidth = self.navigationController!.navigationBar.frame.size.width - 50
-         navTitleImgView = UIImageView(frame: CGRect(x: 0, y: 0, width: navWidth, height: navHeight))
+        let navHeight = navigationController?.navigationBar.frame.size.height ?? 100 - 30
+        let navWidth = navigationController?.navigationBar.frame.size.width ?? 320 - 50
+        
+        //        let navHeight = self.navigationController!.navigationBar.frame.size.height - 30
+        //        let navWidth = self.navigationController!.navigationBar.frame.size.width - 50
+        navTitleImgView = UIImageView(frame: CGRect(x: 0, y: 0, width: navWidth, height: navHeight))
         navTitleImgView?.contentMode = .scaleAspectFit
-         navTitleImgView?.image = self.NavTitleImg
+        navTitleImgView?.image = self.NavTitleImg
         navigationItem.titleView = navTitleImgView
     }
     
@@ -102,7 +105,7 @@ class FeedbackSurveyVC: UIViewController {
         if npsSettings?.rating_scale == "1 to 10"{
             self.ratingScale = 10
             self.sixToNineSV.isHidden = false
-
+            
         }else if npsSettings?.rating_scale == "1 to 5"{
             self.ratingScale = 5
             self.sixToNineSV.isHidden = true
@@ -120,11 +123,11 @@ class FeedbackSurveyVC: UIViewController {
     }
     
     func setAnswerTag()  {
-       // if isAnswersTag{
-             answerTagsCollView.register(UINib(nibName: "AnsTagsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AnsTagsCollectionViewCell")
-            if let flowLayout = self.answerTagsCollView?.collectionViewLayout as? UICollectionViewFlowLayout {
-              flowLayout.estimatedItemSize = CGSize(width: 1, height: 1)
-            }
+        // if isAnswersTag{
+        answerTagsCollView.register(UINib(nibName: "AnsTagsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AnsTagsCollectionViewCell")
+        if let flowLayout = self.answerTagsCollView?.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.estimatedItemSize = CGSize(width: 1, height: 1)
+        }
         //}
     }
     
@@ -136,12 +139,12 @@ class FeedbackSurveyVC: UIViewController {
         self.ratingsTitleLblHC.constant = 30
         self.npsSettings?.rating_type == "emoji" ? self.setRatingViewAsEmoji():self.setRatingViewAsNumber()
         
-
+        
     }
     func HideRatingsView(){
-           self.ratingsTitleLbl.isHidden = true
-           self.ratingsTitleLblHC.constant = 0
-       }
+        self.ratingsTitleLbl.isHidden = true
+        self.ratingsTitleLblHC.constant = 0
+    }
     
     func setRatingViewAsEmoji() {
         oneButton.setImage(UIImage(named: "1"), for: .normal)
@@ -166,56 +169,56 @@ class FeedbackSurveyVC: UIViewController {
         twoButton.backgroundColor = UIColor(red: 242/255, green: 239/255, blue: 244/255, alpha: 1)
         twoButton.setTitle("2", for: .normal)
         twoButton.setTitleColor(UIColor(red: 75/255, green: 40/255, blue: 109/255, alpha: 1), for: .normal)
-
+        
         
         threeButton.roundedShadowView(cornerRadius: 3, borderWidth: 0, borderColor: .clear)
         threeButton.backgroundColor = UIColor(red: 242/255, green: 239/255, blue: 244/255, alpha: 1)
         threeButton.setTitle("3", for: .normal)
         threeButton.setTitleColor(UIColor(red: 75/255, green: 40/255, blue: 109/255, alpha: 1), for: .normal)
-
+        
         
         fourButton.roundedShadowView(cornerRadius: 3, borderWidth: 0, borderColor: .clear)
         fourButton.backgroundColor = UIColor(red: 242/255, green: 239/255, blue: 244/255, alpha: 1)
         fourButton.setTitle("4", for: .normal)
         fourButton.setTitleColor(UIColor(red: 75/255, green: 40/255, blue: 109/255, alpha: 1), for: .normal)
-
+        
         
         fiveButton.roundedShadowView(cornerRadius: 3, borderWidth: 0, borderColor: .clear)
         fiveButton.backgroundColor = UIColor(red: 242/255, green: 239/255, blue: 244/255, alpha: 1)
         fiveButton.setTitle("5", for: .normal)
         fiveButton.setTitleColor(UIColor(red: 75/255, green: 40/255, blue: 109/255, alpha: 1), for: .normal)
-
+        
         
         sixButton.roundedShadowView(cornerRadius: 3, borderWidth: 0, borderColor: .clear)
         sixButton.backgroundColor = UIColor(red: 242/255, green: 239/255, blue: 244/255, alpha: 1)
         sixButton.setTitle("6", for: .normal)
         sixButton.setTitleColor(UIColor(red: 75/255, green: 40/255, blue: 109/255, alpha: 1), for: .normal)
-
+        
         
         sevenButton.roundedShadowView(cornerRadius: 3, borderWidth: 0, borderColor: .clear)
         sevenButton.backgroundColor = UIColor(red: 242/255, green: 239/255, blue: 244/255, alpha: 1)
         sevenButton.setTitle("7", for: .normal)
         sevenButton.setTitleColor(UIColor(red: 75/255, green: 40/255, blue: 109/255, alpha: 1), for: .normal)
-
+        
         
         eightButton.roundedShadowView(cornerRadius: 3, borderWidth: 0, borderColor: .clear)
         eightButton.backgroundColor = UIColor(red: 242/255, green: 239/255, blue: 244/255, alpha: 1)
         eightButton.setTitle("8", for: .normal)
         eightButton.setTitleColor(UIColor(red: 75/255, green: 40/255, blue: 109/255, alpha: 1), for: .normal)
-
+        
         
         nineButton.roundedShadowView(cornerRadius: 3, borderWidth: 0, borderColor: .clear)
         nineButton.backgroundColor = UIColor(red: 242/255, green: 239/255, blue: 244/255, alpha: 1)
         nineButton.setTitle("9", for: .normal)
         nineButton.setTitleColor(UIColor(red: 75/255, green: 40/255, blue: 109/255, alpha: 1), for: .normal)
-
+        
         
         tenButton.roundedShadowView(cornerRadius: 3, borderWidth: 0, borderColor: .clear)
         tenButton.backgroundColor = UIColor(red: 242/255, green: 239/255, blue: 244/255, alpha: 1)
         tenButton.setTitle("10", for: .normal)
         tenButton.setTitleColor(UIColor(red: 75/255, green: 40/255, blue: 109/255, alpha: 1), for: .normal)
-
-       }
+        
+    }
     
     func hideAnswersTag()  {
         self.answersTagTitleLabelTC.constant = 0
@@ -261,11 +264,11 @@ class FeedbackSurveyVC: UIViewController {
     
     func didLoadAnswerTags(tag:Int)  {
         self.isAnswersTag = (self.npsSettings?.data?[0].rating_wise_questions?[tag].answer_tags?.count ?? 0) > 0 ? true:false
-                      // self.setAnswerTag()
+        // self.setAnswerTag()
         self.ansArray =  self.npsSettings?.data?[0].rating_wise_questions?[tag].answer_tags ?? [String]()
         self.npsSettings?.data?[0].rating_wise_questions?[tag].answer_tags?.count ?? 0 > 0 ? showAnswersTag():hideAnswersTag()
         self.answersTagTitleLabel.text = (self.npsSettings?.data?[0].rating_wise_questions?[tag].question ?? "").firstCapitalized
-               
+        
     }
     
     @IBAction func emojiBtnAction(_ sender: UIButton) {
@@ -282,58 +285,58 @@ class FeedbackSurveyVC: UIViewController {
         self.didLoadAnswerTags(tag: sender.tag)
         self.selectedAnswerTagArr.removeAll()
         self.selectedAnswerTagValueArr.removeAll()
-       
-       
+        
+        
         
         switch sender.tag {
-            case 0:
-                npsSettings?.rating_scale == "1 to 10" ?( score = 1 ):( score = 1*2)
-                       print(sender.tag)
-            case 1:
-                npsSettings?.rating_scale == "1 to 10" ?( score = 2 ):( score = 2*2)
-
-                       print(sender.tag)
-            case 2:
-                npsSettings?.rating_scale == "1 to 10" ?( score = 3 ):( score = 3*2)
-
-                       print(sender.tag)
-            case 3:
-                npsSettings?.rating_scale == "1 to 10" ?( score = 4 ):( score = 4*2)
-
-                       print(sender.tag)
-            case 4:
-                npsSettings?.rating_scale == "1 to 10" ?( score = 5 ):( score = 5*2)
-
-                       print(sender.tag)
-            case 5:
-                score = 6
-                       print(sender.tag)
-            case 6:
-                score = 7
-                       print(sender.tag)
-            case 7:
-                score = 8
-                       print(sender.tag)
-            case 8:
-                score = 9
-                       print(sender.tag)
-            case 9:
-                score = 10
-                       print(sender.tag)
-
-            default:
-                       print(sender.tag)
-
+        case 0:
+            npsSettings?.rating_scale == "1 to 10" ?( score = 1 ):( score = 1*2)
+            print(sender.tag)
+        case 1:
+            npsSettings?.rating_scale == "1 to 10" ?( score = 2 ):( score = 2*2)
+            
+            print(sender.tag)
+        case 2:
+            npsSettings?.rating_scale == "1 to 10" ?( score = 3 ):( score = 3*2)
+            
+            print(sender.tag)
+        case 3:
+            npsSettings?.rating_scale == "1 to 10" ?( score = 4 ):( score = 4*2)
+            
+            print(sender.tag)
+        case 4:
+            npsSettings?.rating_scale == "1 to 10" ?( score = 5 ):( score = 5*2)
+            
+            print(sender.tag)
+        case 5:
+            score = 6
+            print(sender.tag)
+        case 6:
+            score = 7
+            print(sender.tag)
+        case 7:
+            score = 8
+            print(sender.tag)
+        case 8:
+            score = 9
+            print(sender.tag)
+        case 9:
+            score = 10
+            print(sender.tag)
+            
+        default:
+            print(sender.tag)
+            
         }
-
+        
     }
     
     @IBAction func noBtnAction(_ sender: UIButton) {
         noButton.setImage(UIImage(named: "RadioChecked"), for: .normal)
         yesButton.setImage(UIImage(named: "RadioButton"), for: .normal)
         self.issuResolved = false
-
-
+        
+        
     }
     
     @IBAction func yesBtnAction(_ sender: UIButton) {
@@ -348,96 +351,98 @@ class FeedbackSurveyVC: UIViewController {
     }
     
     @IBAction func submitBtnAction(_ sender: Any) {
-//        APIManager.sharedInstance.postTranscript(botId: Assistent.botId, email: emaiTextField.text ?? "", language: Assistent.language, sessionId: (UserDefaults.standard.value(forKey: "SessionId") as! String), user: Assistent.userJid) { (resultStr) in
-//            self.showAlert(message: resultStr, title: "Message!")
-//        }
+        //        APIManager.sharedInstance.postTranscript(botId: Assistent.botId, email: emaiTextField.text ?? "", language: Assistent.language, sessionId: (UserDefaults.standard.value(forKey: "SessionId") as! String), user: Assistent.userJid) { (resultStr) in
+        //            self.showAlert(message: resultStr, title: "Message!")
+        //        }
         
-//        APIManager.sharedInstance.submitNPSSurveyFeedback(reason: self.selectedAnswerTagValueArr, score: self.score, feedback: "", issue_resolved: self.issuResolved) { (resultStr) in
-//             self.showAlert(message: resultStr, title: "Message!")
-//        }
+        //        APIManager.sharedInstance.submitNPSSurveyFeedback(reason: self.selectedAnswerTagValueArr, score: self.score, feedback: "", issue_resolved: self.issuResolved) { (resultStr) in
+        //             self.showAlert(message: resultStr, title: "Message!")
+        //        }
         
         APIManager.sharedInstance.submitNPSSurveyFeedback(reason: self.selectedAnswerTagValueArr, score: self.score, feedback: "", issue_resolved: self.issuResolved) { (resultStr) in
             DispatchQueue.main.async() {
-              self.showAlert(message: resultStr, title: "Message!")            }
-                     
+                self.showAlert(message: resultStr, title: "Message!")            }
+            
         }
     }
     
     @IBAction func closeBtnAction(_ sender: Any) {
-                   let transcriptViewController = self.storyboard!.instantiateViewController(withIdentifier: "TranscriptViewController") as! TranscriptViewController
-                   transcriptViewController.NavTitleImg = self.navTitleImgView!.image!
-                   self.navigationController?.pushViewController(transcriptViewController, animated: true)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let transcriptViewController = storyboard?.instantiateViewController(withIdentifier: "TranscriptViewController") as! TranscriptViewController
+        transcriptViewController.NavTitleImg = self.navTitleImgView!.image!
+        self.navigationController?.pushViewController(transcriptViewController, animated: true)
     }
     
     
- 
+    
 }
 
 
 extension FeedbackSurveyVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
- func numberOfSections(in collectionView: UICollectionView) -> Int {
-     // 1
-     return 1
- }
- 
- func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
- //  if isAnswersTag && (collectionView == answerTagsCollView){
-    return self.ansArray.count
-//    }
-//    return 0
- }
- 
- func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//      if isAnswersTag && (collectionView == answerTagsCollView)
-//     {
-     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnsTagsCollectionViewCell", for: indexPath) as! AnsTagsCollectionViewCell
-    self.selectedAnswerTagArr.contains(indexPath) ? (cell.container.backgroundColor = UIColor(red: 75/255, green: 40/255, blue: 109/255, alpha: 1)):(cell.container.backgroundColor = .clear)
-    cell.name.text = "\(ansArray[indexPath.item])"
-    cell.container.layer.borderWidth = 1
-    cell.container.layer.borderColor = UIColor.lightGray.cgColor
-    return cell
-//    }
-//    
-//    return UICollectionViewCell()
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        // 1
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //  if isAnswersTag && (collectionView == answerTagsCollView){
+        return self.ansArray.count
+        //    }
+        //    return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //      if isAnswersTag && (collectionView == answerTagsCollView)
+        //     {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnsTagsCollectionViewCell", for: indexPath) as! AnsTagsCollectionViewCell
+        self.selectedAnswerTagArr.contains(indexPath) ? (cell.container.backgroundColor = UIColor(red: 75/255, green: 40/255, blue: 109/255, alpha: 1)):(cell.container.backgroundColor = .clear)
+        cell.name.text = "\(ansArray[indexPath.item])"
+        cell.container.layer.borderWidth = 1
+        cell.container.layer.borderColor = UIColor.lightGray.cgColor
+        return cell
+        //    }
+        //
+        //    return UICollectionViewCell()
+        
+        
+        //      else{
+        //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmojiCollectionViewCell", for: indexPath) as! EmojiCollectionViewCell
+        //            cell.configureCell(index: indexPath, isEmojiUI: true, selectedIndex: self.selectedIndexPath)
+        //
+        //            return cell
+        //   }
+    }
     
     
-//      else{
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmojiCollectionViewCell", for: indexPath) as! EmojiCollectionViewCell
-//            cell.configureCell(index: indexPath, isEmojiUI: true, selectedIndex: self.selectedIndexPath)
-//
-//            return cell
-//   }
- }
- 
- 
-// func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//     if isAnswersTag && (collectionView == answerTagsCollView){
-//     let cell = answerTagsCollView.dequeueReusableCell(withReuseIdentifier: "AnsTagsCollectionViewCell", for: indexPath) as! AnsTagsCollectionViewCell
-//
-//     cell.setNeedsLayout()
-//     cell.layoutIfNeeded()
-//     let size: CGSize = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-//        return CGSize(width: size.width, height: 30)
-//    }
-//    print(collectionView.frame.width/5)
-//    return CGSize(width: 0, height: 0)
-// }
- 
- 
- func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-     return UIEdgeInsets.zero
- }
- 
- func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-     return 5
- }
- 
- func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-     return 10
- }
+    // func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    //     if isAnswersTag && (collectionView == answerTagsCollView){
+    //     let cell = answerTagsCollView.dequeueReusableCell(withReuseIdentifier: "AnsTagsCollectionViewCell", for: indexPath) as! AnsTagsCollectionViewCell
+    //
+    //     cell.setNeedsLayout()
+    //     cell.layoutIfNeeded()
+    //     let size: CGSize = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+    //        return CGSize(width: size.width, height: 30)
+    //    }
+    //    print(collectionView.frame.width/5)
+    //    return CGSize(width: 0, height: 0)
+    // }
     
-func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let selectedItem = collectionView.cellForItem(at: indexPath) as! AnsTagsCollectionViewCell
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedItem = collectionView.cellForItem(at: indexPath) as! AnsTagsCollectionViewCell
         self.selectedTagIndexPath = indexPath
         if selectedAnswerTagArr.contains(indexPath){
             selectedAnswerTagArr.remove(at: selectedAnswerTagArr.firstIndex(of: indexPath) ?? -1)
@@ -446,10 +451,10 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
             selectedAnswerTagArr.append(indexPath)
             selectedAnswerTagValueArr.append(selectedItem.name.text ?? "")
         }
-    print("selectedAnswerTagValueArr === \(selectedAnswerTagValueArr)")
+        print("selectedAnswerTagValueArr === \(selectedAnswerTagValueArr)")
         self.answerTagsCollView.reloadData()
-    
-     }
+        
+    }
     
     
 }

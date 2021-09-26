@@ -14,7 +14,7 @@ protocol PropsCollectionViewCellDelegate {
     func didTappedPropsButton(urlStr:String)
 }
 
- class PropsCollectionViewCell: UICollectionViewCell {
+class PropsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var propsButton: UIButton!
     @IBOutlet weak var bottomLbl: UILabel!
     
@@ -42,20 +42,20 @@ protocol PropsCollectionViewCellDelegate {
     }
     
     @objc func didTappedButton() {
-//        switch messageList![button.tag].kind {
-//        case .quickReplyButton(let butn):
-//            delegate?.didTappedQuickReplyButton(type: butn.quickReplyButton!.type, text: butn.quickReplyButton!.text)
-//        default:
-//            break
-//        }
+        //        switch messageList![button.tag].kind {
+        //        case .quickReplyButton(let butn):
+        //            delegate?.didTappedQuickReplyButton(type: butn.quickReplyButton!.type, text: butn.quickReplyButton!.text)
+        //        default:
+        //            break
+        //        }
     }
     
     @IBAction func buttonTapped(_ sender: Any) {
         self.delegate?.didTappedPropsButton(urlStr: self.prop!.onesource)
-    print("Button Tapped")
+        print("Button Tapped")
     }
     
-
+    
     
     func configure(with messageList: [MockMessage], at indexPath: IndexPath, and messagesCollectionView: MessagesCollectionView, with configuration:Setting) {
         
@@ -67,12 +67,12 @@ protocol PropsCollectionViewCellDelegate {
         switch message.kind {
         case .prop(let prop):
             self.prop = prop.prop 
-//            button.setTitle((butn.quickReplyButton?.text)?.capitalized, for: .normal)
-//            button.tag = indexPath.section
-//            button.backgroundColor = configuration.button_colour?.hexToUIColor
-//            button.setTitleColor(configuration.sender_text_icon?.hexToUIColor, for: .normal)
-//            button.titleLabel?.font = .systemFont(ofSize: 12)
-
+            //            button.setTitle((butn.quickReplyButton?.text)?.capitalized, for: .normal)
+            //            button.tag = indexPath.section
+            //            button.backgroundColor = configuration.button_colour?.hexToUIColor
+            //            button.setTitleColor(configuration.sender_text_icon?.hexToUIColor, for: .normal)
+            //            button.titleLabel?.font = .systemFont(ofSize: 12)
+            
         default:
             break
         }

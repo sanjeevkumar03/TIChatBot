@@ -32,34 +32,34 @@ class CustomBotCollectionViewCell: UICollectionViewCell {
         delegate?.setSecetdBotOption(choiceOption: (button.titleLabel?.text)!)
     }
     
- 
-    func createHyperlinkWithText(link : [String : String]){
     
+    func createHyperlinkWithText(link : [String : String]){
+        
         let index = link.startIndex
         let linkText = link.keys[index]
         let linkURL = link[linkText]
         
-       let styledText = NSMutableAttributedString(string: linkText)
-//        // Set Attribuets for Color, HyperLink and Font Size
+        let styledText = NSMutableAttributedString(string: linkText)
+        //        // Set Attribuets for Color, HyperLink and Font Size
         let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.link:NSURL(string: linkURL!)!, NSAttributedString.Key.foregroundColor: UIColor.blue]
         styledText.setAttributes(attributes, range: NSMakeRange(0, linkText.count))
         let linkLabel = UILabel(frame: CGRect(x: 0, y: yFactor, width: Int(self.frame.width-40), height: 60))
-
+        
         linkLabel.attributedText = styledText
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CustomBotCollectionViewCell.tapResponse(recognizer:)))
-            
+        
         tapGesture.numberOfTapsRequired = 1
         linkLabel.isUserInteractionEnabled =  true
         linkLabel.addGestureRecognizer(tapGesture)
-
+        
         linkUrl = URL(string: linkURL!)
-         self.contentView.addSubview(linkLabel)
-       // print(linkLabel.frame)
+        self.contentView.addSubview(linkLabel)
+        // print(linkLabel.frame)
         yFactor = yFactor + 60
     }
-
+    
     @objc func tapResponse(recognizer: UITapGestureRecognizer) {
-      //  print("tap")
+        //  print("tap")
         
         UIApplication.shared.open(linkUrl!, options: [:])
     }
@@ -70,11 +70,11 @@ class CustomBotCollectionViewCell: UICollectionViewCell {
         for subview in contentView.subviews {
             subview.removeFromSuperview()
         }
-       
+        
         let colCount : Int = (data.tableCoulumns?.count)!
         if(colCount >= 1){
             
-          //  print(self.frame.width-40)
+            //  print(self.frame.width-40)
             var labelWidth = 0
             if(colCount < 3){
                 labelWidth = Int(self.frame.width-40) / colCount
@@ -94,7 +94,7 @@ class CustomBotCollectionViewCell: UICollectionViewCell {
                 label.backgroundColor =  UIColor(red: 201/255, green: 222/255, blue: 242/255, alpha: 0.35)
                 label.numberOfLines = 2
                 label.font = UIFont.boldSystemFont(ofSize: 16)
-            
+                
                 label.layer.borderWidth = 1
                 label.layer.cornerRadius = 5
                 label.layer.borderColor =  UIColor(red: 201/255, green: 222/255, blue: 242/255, alpha: 0.6).cgColor
@@ -131,7 +131,7 @@ class CustomBotCollectionViewCell: UICollectionViewCell {
                         label.backgroundColor =  UIColor(red: 201/255, green: 222/255, blue: 242/255, alpha: 0.35)
                         scrollView.addSubview(label)
                         xAxix = xAxix + labelWidth
-                    //    print(label.frame)
+                        //    print(label.frame)
                     }
                     yAxix = yAxix + 42
                     yFactor = yAxix
@@ -149,26 +149,26 @@ class CustomBotCollectionViewCell: UICollectionViewCell {
             createHyperlinkWithText(link: data.link as! [String : String] )
         }
     }
-
+    
     func makeButtonWithText(text:String, withTag:Int) -> UIButton {
         _ = withTag-1
         yFactor = yFactor + 2
         let myButton = UIButton(type: .custom)
         myButton.frame = CGRect(x: 33, y: yFactor, width: Int(self.frame.width-40), height: 30)
-         topSpace = 0
-       // print(myButton.frame)
+        topSpace = 0
+        // print(myButton.frame)
         myButton.setTitle(text, for: .normal)
         myButton.layer.borderColor = UIColor(red: 201/255, green: 222/255, blue: 242/255, alpha: 0.6).cgColor
         myButton.backgroundColor = UIColor(red: 201/255, green: 222/255, blue: 242/255, alpha: 0.35)
         if(text == "Yes" || text == "No"){
             myButton.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
             myButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-             myButton.setTitleColor(UIColor.darkGray, for: .normal)
+            myButton.setTitleColor(UIColor.darkGray, for: .normal)
         }else{
             myButton.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
-             myButton.setTitleColor(UIColor.darkGray, for: .normal)
+            myButton.setTitleColor(UIColor.darkGray, for: .normal)
         }
-           
+        
         myButton.layer.borderWidth = 1
         myButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0);
         myButton.layer.cornerRadius = 5
@@ -176,7 +176,7 @@ class CustomBotCollectionViewCell: UICollectionViewCell {
             myButton.addTarget(self, action: #selector(CustomBotCollectionViewCell.onPaymentSelection(button:)), for: UIControl.Event.touchUpInside)
         }
         myButton.addTarget(self, action: #selector(CustomBotCollectionViewCell.onSelectedBotOption(button:)), for: UIControl.Event.touchUpInside)
-         yFactor = yFactor + 32
+        yFactor = yFactor + 32
         return myButton
     }
     

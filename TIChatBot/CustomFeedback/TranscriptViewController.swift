@@ -16,7 +16,7 @@ class TranscriptViewController: UIViewController {
      @IBOutlet weak var closeButton: UIButton!
      @IBOutlet weak var emailContainer: UIView!
     
-    var NavTitleImg:UIImage = UIImage(named: "user1")!
+    var NavTitleImg:UIImage = UIImage(named: "user1", in: Bundle(for: TranscriptViewController.self), compatibleWith: nil)!
     var navTitleImgView:UIImageView?
     
 
@@ -28,8 +28,11 @@ class TranscriptViewController: UIViewController {
            }
     
     func addNavTitleImage()  {
-        let navHeight = self.navigationController!.navigationBar.frame.size.height - 30
-        let navWidth = self.navigationController!.navigationBar.frame.size.width - 50
+        let navHeight = navigationController?.navigationBar.frame.size.height ?? 100 - 30
+        let navWidth = navigationController?.navigationBar.frame.size.width ?? 320 - 50
+
+//        let navHeight = self.navigationController!.navigationBar.frame.size.height - 30
+//        let navWidth = self.navigationController!.navigationBar.frame.size.width - 50
          navTitleImgView = UIImageView(frame: CGRect(x: 0, y: 0, width: navWidth, height: navHeight))
         navTitleImgView?.contentMode = .scaleAspectFit
          navTitleImgView?.image = self.NavTitleImg

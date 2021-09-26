@@ -11,7 +11,7 @@ import UIKit
 protocol MultiOpsCollectionViewCellDelegate {
     func didTappedMoreOptionButton(choices:[Choice])
     func didTappedChoice(value:String)
-
+    
 }
 
 class MultiOpsCollectionViewCell: UICollectionViewCell, ChoiceTableViewCellDelegate {
@@ -26,36 +26,37 @@ class MultiOpsCollectionViewCell: UICollectionViewCell, ChoiceTableViewCellDeleg
     
     override func awakeFromNib() {
         super.awakeFromNib()
-   containerView.layer.cornerRadius = 10
-   tableView.register(UINib(nibName: "ChoiceTableViewCell", bundle: nil), forCellReuseIdentifier: "ChoiceTableViewCell")
-      
+        containerView.layer.cornerRadius = 10
+        let bundle = Bundle(for: MultiOpsCollectionViewCell.self)
+        tableView.register(UINib(nibName: "ChoiceTableViewCell", bundle: bundle), forCellReuseIdentifier: "ChoiceTableViewCell")
+        
     }
     
     
     func didTappedChoiceLbl(value:String){
-         self.delegate?.didTappedChoice(value: value)
+        self.delegate?.didTappedChoice(value: value)
     }
-        
+    
     func configure(with messageList: [MockMessage], at indexPath: IndexPath, and messagesCollectionView: MessagesCollectionView, with configuration:Setting) {
-            
-            guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
-                fatalError("Ouch. nil data source for messages")
-            }
-            self.messageList = messageList
-            let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
-            switch message.kind {
-            case .multiOps(let multiOpsProtocol):
-                self.multiOps = multiOpsProtocol.multiOps
-                self.titleLbl.text = "  \(self.multiOps!.text)"
-                self.containerView.backgroundColor = configuration.response_bubble?.hexToUIColor
-                self.titleLbl.textColor = configuration.response_text_icon?.hexToUIColor
-                self.button.setTitleColor(configuration.response_text_icon?.hexToUIColor, for: .normal) 
-
-            default:
-                break
-            }
+        
+        guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
+            fatalError("Ouch. nil data source for messages")
         }
-
+        self.messageList = messageList
+        let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
+        switch message.kind {
+        case .multiOps(let multiOpsProtocol):
+            self.multiOps = multiOpsProtocol.multiOps
+            self.titleLbl.text = "  \(self.multiOps!.text)"
+            self.containerView.backgroundColor = configuration.response_bubble?.hexToUIColor
+            self.titleLbl.textColor = configuration.response_text_icon?.hexToUIColor
+            self.button.setTitleColor(configuration.response_text_icon?.hexToUIColor, for: .normal) 
+            
+        default:
+            break
+        }
+    }
+    
     @IBAction func buttonAction(_ sender: Any) {
         self.delegate?.didTappedMoreOptionButton(choices: self.multiOps!.choices)
     }
@@ -64,19 +65,19 @@ class MultiOpsCollectionViewCell: UICollectionViewCell, ChoiceTableViewCellDeleg
 
 
 extension MultiOpsCollectionViewCell:UITableViewDelegate, UITableViewDataSource{
-     func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2 //self.multiOps?.options_limit ?? 0
     }
-
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChoiceTableViewCell", for: indexPath) as! ChoiceTableViewCell
         cell.choiceTitleLbl.text = self.multiOps?.choices[indexPath.row].label
         cell.delegate = self
-
+        
         return cell
     }
     
@@ -84,8 +85,8 @@ extension MultiOpsCollectionViewCell:UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-     //   self.delegate?.didTappedChoice(choices: (self.multiOps?.choices[indexPath.row])!)
-      // Do here
+        //   self.delegate?.didTappedChoice(choices: (self.multiOps?.choices[indexPath.row])!)
+        // Do here
     }
-
+    
 }

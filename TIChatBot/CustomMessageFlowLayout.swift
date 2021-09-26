@@ -26,27 +26,27 @@ import Foundation
 import UIKit
 //import MessageKit
 
- class CustomMessagesFlowLayout: MessagesCollectionViewFlowLayout {
+class CustomMessagesFlowLayout: MessagesCollectionViewFlowLayout {
     
     open lazy var customMessageSizeCalculator = CustomMessageSizeCalculator(layout: self)
     
     open override func cellSizeCalculatorForItem(at indexPath: IndexPath) -> CellSizeCalculator {
-//        if isSectionReservedForTypingBubble(indexPath.section) {
-//            return typingMessageSizeCalculator
-//        }
+        //        if isSectionReservedForTypingBubble(indexPath.section) {
+        //            return typingMessageSizeCalculator
+        //        }
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
         if case .quickReplyButton = message.kind {
             return customMessageSizeCalculator
         }
         else if case .quickReplySSO = message.kind {
-                return customMessageSizeCalculator
-            }
+            return customMessageSizeCalculator
+        }
         else if case .carousel = message.kind {
             return customMessageSizeCalculator
         }
         else if case .prop = message.kind {
-                   return customMessageSizeCalculator
-               }
+            return customMessageSizeCalculator
+        }
         else if case .multiOps = message.kind {
             return customMessageSizeCalculator
         }
@@ -65,7 +65,7 @@ import UIKit
     }
 }
 
- class CustomMessageSizeCalculator: MessageSizeCalculator {
+class CustomMessageSizeCalculator: MessageSizeCalculator {
     
     public override init(layout: MessagesCollectionViewFlowLayout? = nil) {
         super.init()
@@ -102,20 +102,20 @@ import UIKit
             let carousel = carouse.carouselObjects[indexPath.item]
             let optionHeight = CGFloat(((carousel.options.count)*40) + 300)
             print("CARAOUSE OPTIONS ======= \(carousel.options.count)")
-
+            
             print("CARAOUSE HEIGHT ======= \(optionHeight)")
             
             return CGSize(width:collectionViewWidth - inset , height: optionHeight)
             
-            case .bottom:
+        case .bottom:
             return CGSize(width: collectionViewWidth - inset, height: 20)
             
         default:
             break
         }
-
-       
+        
+        
         return CGSize(width: collectionViewWidth - inset, height: 40)
     }
-  
+    
 }

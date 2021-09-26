@@ -12,28 +12,28 @@ import UIKit
 extension String {
     func parseJosonResponse() -> MessageData {
         var messageData:MessageData = MessageData(mesageData: [:])
-       // var responseList:[Response] = []
+        // var responseList:[Response] = []
         if let data = self.data(using: .utf8) {
-                        do {
-                            if let jsonDict = try? (JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as! [String : Any]){
-                                if let content = jsonDict["content"] as? [String : Any] as NSDictionary? as? [AnyHashable: Any]{
-                                    print(jsonDict)
-                                    messageData = MessageData(mesageData: content as NSDictionary)
-                                    print(messageData as Any)
-                                    return messageData
-                                }
-                            }
-                        } 
-//            do{
-//                let messageData = try JSONDecoder().decode(MessageData.self, from: data)
-//                if let messageDataContent = messageData.content{
-//                      print(messageData.content?.response_list)
-//
-//                    return messageDataContent.response_list!
-//                }
-//            }catch{
-//                print(error)
-//            }
+            do {
+                if let jsonDict = try? (JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as! [String : Any]){
+                    if let content = jsonDict["content"] as? [String : Any] as NSDictionary? as? [AnyHashable: Any]{
+                        print(jsonDict)
+                        messageData = MessageData(mesageData: content as NSDictionary)
+                        print(messageData as Any)
+                        return messageData
+                    }
+                }
+            } 
+            //            do{
+            //                let messageData = try JSONDecoder().decode(MessageData.self, from: data)
+            //                if let messageDataContent = messageData.content{
+            //                      print(messageData.content?.response_list)
+            //
+            //                    return messageDataContent.response_list!
+            //                }
+            //            }catch{
+            //                print(error)
+            //            }
         }
         return messageData
     }
@@ -55,8 +55,8 @@ extension String {
         return attributedString.string
     }
     
-
-
+    
+    
 }
 
 

@@ -13,7 +13,7 @@ protocol QuickReplyButtonCollectionViewCellDelegate {
     func didTappedQuickReplyButton(type:String, text:String)
 }
 
- class QuickReplyButtonCollectionViewCell: UICollectionViewCell {
+class QuickReplyButtonCollectionViewCell: UICollectionViewCell {
     
     let button = UIButton()
     var buttonTag = 0
@@ -58,7 +58,7 @@ protocol QuickReplyButtonCollectionViewCellDelegate {
     }
     
     
-
+    
     
     func configure(with messageList: [MockMessage], at indexPath: IndexPath, and messagesCollectionView: MessagesCollectionView, with configuration:Setting) {
         

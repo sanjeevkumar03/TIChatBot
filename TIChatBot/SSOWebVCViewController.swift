@@ -26,8 +26,8 @@ class SSOWebVCViewController: UIViewController {
     var isFirstTime = false
     var hud:MBProgressHUD?
     var delegate:SSOWebVCViewControllerDelegate!
-
-
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,29 +40,29 @@ class SSOWebVCViewController: UIViewController {
     
     
     func show()
-       {
-           self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-           self.view.alpha = 0.0;
-           UIView.animate(withDuration: 0.25, animations: {
-               self.view.alpha = 1.0
-               self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-               
-           });
-       }
-       
-       func remove()
-       {   
-           UIView.animate(withDuration: 0.25, animations: {
-               self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-               self.view.alpha = 0.0;
-           }, completion:{(finished : Bool)  in
-               if (finished)
-               {
-                   self.view.removeFromSuperview()
-               }
-           });
-       }
-
+    {
+        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        self.view.alpha = 0.0;
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.alpha = 1.0
+            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            
+        });
+    }
+    
+    func remove()
+    {   
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            self.view.alpha = 0.0;
+        }, completion:{(finished : Bool)  in
+            if (finished)
+            {
+                self.view.removeFromSuperview()
+            }
+        });
+    }
+    
     
     func loadWV() {
         let link = URL(string:ssoURLStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!
@@ -72,43 +72,43 @@ class SSOWebVCViewController: UIViewController {
     
     
     @IBAction func backButton(_ sender: Any) {
-         self.remove()
+        self.remove()
     }
 }
 
 extension SSOWebVCViewController: WKNavigationDelegate{
     func webView(_ webView: WKWebView, didFinish: WKNavigation!){
         self.hud?.hide(animated: true)
-       }
-       func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-//        if !isFirstTime{
-//            isFirstTime = true
-            self.hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-//        }
-//        else{
-//            self.hud?.show(animated: true)
-//        }
-       }
-       func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
-         //  if (navigationAction.request.url?.lastPathComponent == "inter_mobile"){
-           if let url = navigationAction.request.url?.absoluteURL{
-
+    }
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        //        if !isFirstTime{
+        //            isFirstTime = true
+        self.hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        //        }
+        //        else{
+        //            self.hud?.show(animated: true)
+        //        }
+    }
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
+        //  if (navigationAction.request.url?.lastPathComponent == "inter_mobile"){
+        if let url = navigationAction.request.url?.absoluteURL{
+            
             print("URL ==== \(url.valueOfParameter("data") ?? "")")
             let data = url.valueOfParameter("data") ?? ""
             if data != ""{
-            self.delegate.ssoLoggedInSuccessfullyWith(sessionId: data)
+                self.delegate.ssoLoggedInSuccessfullyWith(sessionId: data)
                 self.remove()
             }
-//            Base.url = self.cbaBaseUrl
-//            print("URL ==== \(Base.url)")
-//
-//            self.callCBALoginAPI(sessionId: url.valueOfParameter("data") ?? "")
-        
-        print(navigationAction.request.url)
-              
-           decisionHandler(.allow)
-     }
-}
+            //            Base.url = self.cbaBaseUrl
+            //            print("URL ==== \(Base.url)")
+            //
+            //            self.callCBALoginAPI(sessionId: url.valueOfParameter("data") ?? "")
+            
+            print(navigationAction.request.url)
+            
+            decisionHandler(.allow)
+        }
+    }
 }
 
 

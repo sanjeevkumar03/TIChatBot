@@ -25,7 +25,7 @@
 import UIKit
 //import MessageKit
 
- class CustomCell: UICollectionViewCell {
+class CustomCell: UICollectionViewCell {
     
     let label = UILabel()
     
@@ -50,7 +50,7 @@ import UIKit
         label.frame = contentView.bounds
     }
     
-     func configure(with message: MessageType, at indexPath: IndexPath, and messagesCollectionView: MessagesCollectionView) {
+    func configure(with message: MessageType, at indexPath: IndexPath, and messagesCollectionView: MessagesCollectionView) {
         // Do stuff
         switch message.kind {
         case .custom(let data):

@@ -11,7 +11,7 @@ import UIKit
 
 
 class CollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var optionsTableView: UITableView!
     @IBOutlet weak var titleLbl: UILabel!
@@ -26,13 +26,15 @@ class CollectionViewCell: UICollectionViewCell {
         self.optionsTableView.delegate = self 
         self.optionsTableView.dataSource = self
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-           imgView.isUserInteractionEnabled = true
-           imgView.addGestureRecognizer(tapGestureRecognizer)
+        imgView.isUserInteractionEnabled = true
+        imgView.addGestureRecognizer(tapGestureRecognizer)
         
-        optionsTableView.register(UINib(nibName: "OptionTableViewCell", bundle: nil), forCellReuseIdentifier: "OptionTableViewCell")
-
+        let bundle = Bundle(for: CollectionViewCell.self)
+        
+        optionsTableView.register(UINib(nibName: "OptionTableViewCell", bundle: bundle), forCellReuseIdentifier: "OptionTableViewCell")
+        
         // self.collectionView.register(UINib.init(nibName: “CollectionViewCell”, bundle: nil), forCellWithReuseIdentifier: “collectionViewID”)
-      //  self.optionsTableView.register(UINib(nibName:"OptionCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "OptionCollectionViewCell")
+        //  self.optionsTableView.register(UINib(nibName:"OptionCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "OptionCollectionViewCell")
         // Initialization code
     }
     
@@ -41,7 +43,7 @@ class CollectionViewCell: UICollectionViewCell {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
         NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: tappedImage.image)
         print("image Tapped")
-
+        
     }
     
     func configureCell(carouselObj:CarousalObject) {
@@ -53,25 +55,25 @@ class CollectionViewCell: UICollectionViewCell {
         tableViewHeightConstraint.constant = tblViewHeight
         
         
-       // optionsTableView.heightAnchor.constraint(equalToConstant: tblViewHeight).isActive = true
+        // optionsTableView.heightAnchor.constraint(equalToConstant: tblViewHeight).isActive = true
         //self.optionsTableView.heightAnchor.constraint(equalTo: tblViewHeight).isActive = true
-       // print("\( self.optionsArray?.count)====\(carouselObj.options.count)")
-
+        // print("\( self.optionsArray?.count)====\(carouselObj.options.count)")
+        
         
         self.titleLbl.text = carouselObj.text
-          print("self.titleLbl.text ====== \(self.titleLbl.text)")
-        self.imgView.image = UIImage(named: "Image")!
-
+        print("self.titleLbl.text ====== \(self.titleLbl.text)")
+        self.imgView.image = UIImage(named: "Image", in: Bundle(for: CollectionViewCell.self), with: nil)!
+        
         if carouselObj.image != nil && carouselObj.image != ""{
-        downloadImage(from: URL(string: carouselObj.image)!)
+            downloadImage(from: URL(string: carouselObj.image)!)
         }
     }
     
-//    var carouselObj:CarousalObject!{
-//        didSet{
-//            
-//        }
-//    }
+    //    var carouselObj:CarousalObject!{
+    //        didSet{
+    //            
+    //        }
+    //    }
     
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
@@ -93,7 +95,7 @@ class CollectionViewCell: UICollectionViewCell {
             }
         }
     }
-
+    
 }
 
 extension CollectionViewCell: UITableViewDelegate, UITableViewDataSource {
@@ -105,58 +107,58 @@ extension CollectionViewCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return self.optionsArray?.count ?? 0
-     }
-
-
+        return self.optionsArray?.count ?? 0
+    }
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 38.0
     }
-
-//
-//
-//
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return  self.optionsArray?.count ?? 0
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OptionCollectionViewCell", for: indexPath) as! OptionCollectionViewCell
-//
-//        //in this example I added a label named "title" into the MyCollectionCell class
-//        print(self.optionsArray![indexPath.item].label)
-//        //  cell.titleLbl.text = self.caraouselObjArray![indexPath.item].text
-//        cell.configureCell(option: self.optionsArray![indexPath.item])
-//        // cell.carouselObj = self.caraouselObjArray![indexPath.item]
-//        return cell
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        // handle tap events
-//        print("You selected cell #\(indexPath.item)!")
-//    }
-//
-//    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//    //        return CGSize(width: 250, height: 300)
-//    //    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 10
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let frameSize = collectionView.frame.size
-//        print(frameSize.height)
-//        return CGSize(width: frameSize.width - 10, height: frameSize.height)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-//    }
-//
+    
+    //
+    //
+    //
+    //    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    //        return 1
+    //    }
+    //
+    //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    //        return  self.optionsArray?.count ?? 0
+    //    }
+    //
+    //    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    //
+    //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OptionCollectionViewCell", for: indexPath) as! OptionCollectionViewCell
+    //
+    //        //in this example I added a label named "title" into the MyCollectionCell class
+    //        print(self.optionsArray![indexPath.item].label)
+    //        //  cell.titleLbl.text = self.caraouselObjArray![indexPath.item].text
+    //        cell.configureCell(option: self.optionsArray![indexPath.item])
+    //        // cell.carouselObj = self.caraouselObjArray![indexPath.item]
+    //        return cell
+    //    }
+    //
+    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    //        // handle tap events
+    //        print("You selected cell #\(indexPath.item)!")
+    //    }
+    //
+    //    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    //    //        return CGSize(width: 250, height: 300)
+    //    //    }
+    //
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    //        return 10
+    //    }
+    //
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    //        let frameSize = collectionView.frame.size
+    //        print(frameSize.height)
+    //        return CGSize(width: frameSize.width - 10, height: frameSize.height)
+    //    }
+    //
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    //        return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+    //    }
+    //
 }

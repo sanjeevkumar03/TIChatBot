@@ -14,19 +14,19 @@ protocol BottomCollectionViewCellDelegate {
 
 
 class BottomCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var thumbsDownBtn: UIButton!
     @IBOutlet weak var thumbsUpBtn: UIButton!
     @IBOutlet weak var feedbackContainer: UIView!
     @IBOutlet weak var timeLabel: UILabel!
     
     var delegate:BottomCollectionViewCellDelegate?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     @IBAction func thumbsDown(_ sender: Any) {
         delegate?.didTappedThumbButton(thumbType: "down")
         print("thumbsDOWN...")
@@ -39,7 +39,7 @@ class BottomCollectionViewCell: UICollectionViewCell {
     
     func configCell(isFeedback:Bool)  {
         timeLabel.text = getCurrentTime()
-
+        
         if isFeedback{
             feedbackContainer.isHidden = false
         }
@@ -52,12 +52,12 @@ class BottomCollectionViewCell: UICollectionViewCell {
     func getCurrentTime() -> String {
         // get the current date and time
         let currentDateTime = Date()
-
+        
         // initialize the date formatter and set the style
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         formatter.dateStyle = .short
-
+        
         // get the date time String from the date object
         return formatter.string(from: currentDateTime) // October 8, 2016 at 10:48:53 PM
     }

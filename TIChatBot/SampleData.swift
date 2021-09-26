@@ -51,7 +51,7 @@ final internal class SampleData {
     
     var now = Date()
     
-    let messageImages: [UIImage] = [#imageLiteral(resourceName: "Image2"), #imageLiteral(resourceName: "user3")]
+    let messageImages: [UIImage] = []
     
     let emojis = [
         "👍",
@@ -125,86 +125,86 @@ final internal class SampleData {
     func randomMessageType() -> MessageTypes {
         let messageType = MessageTypes.random()
         
-//        if !UserDefaults.standard.bool(forKey: "\(messageType)" + " Messages") {
-//            return randomMessageType()
-//        }
-//
+        //        if !UserDefaults.standard.bool(forKey: "\(messageType)" + " Messages") {
+        //            return randomMessageType()
+        //        }
+        //
         return messageType
     }
     
- //   func randomMessage(allowedSenders: [Sender]) -> MockMessage {
-        
-//        let randomNumberSender = Int(arc4random_uniform(UInt32(allowedSenders.count)))
-//        
-//        let uniqueID = NSUUID().uuidString
-//        let sender = allowedSenders[randomNumberSender]
-//        let date = dateAddingRandomTime()
-//        
-//        switch randomMessageType() {
-//        case .Text:
-//            let randomSentence = Lorem.sentence()
-//            return MockMessage(text: randomSentence, sender: sender, messageId: uniqueID, date: date)
-//        case .AttributedText:
-//            let randomSentence = Lorem.sentence()
-//            let attributedText = attributedString(with: randomSentence)
-//            return MockMessage(attributedText: attributedText, sender: senders[randomNumberSender], messageId: uniqueID, date: date)
-////        case .Photo:
-////            let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
-////            let image = messageImages[randomNumberImage]
-////            return MockMessage(image: image, sender: sender, messageId: uniqueID, date: date)
-////        case .Video:
-////            let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
-////            let image = messageImages[randomNumberImage]
-////            return  MockMessage(image: image, sender: sender, messageId: uniqueID, date: date)
-//        case .Emoji:
-//            let randomNumberEmoji = Int(arc4random_uniform(UInt32(emojis.count)))
-//            return MockMessage(emoji: emojis[randomNumberEmoji], sender: sender, messageId: uniqueID, date: date)
-//        case .Location:
-//            let randomNumberLocation = Int(arc4random_uniform(UInt32(locations.count)))
-//            return MockMessage(location: locations[randomNumberLocation], sender: sender, messageId: uniqueID, date: date)
-//        case .Url:
-//            return MockMessage(text: "https://github.com/MessageKit", sender: sender, messageId: uniqueID, date: date)
-//        case .Phone:
-//            return MockMessage(text: "123-456-7890", sender: sender, messageId: uniqueID, date: date)
-//        case .Custom:
-//            return MockMessage(custom: "Someone left the conversation", sender: system, messageId: uniqueID, date: date)
-//        case .Photo:
-//            <#code#>
-//        }
- //   }
+    //   func randomMessage(allowedSenders: [Sender]) -> MockMessage {
     
-//    func getMessages(count: Int, completion: ([MockMessage]) -> Void) {
-//        var messages: [MockMessage] = []
-//        // Disable Custom Messages
-//        UserDefaults.standard.set(true, forKey: "Custom Messages")
-//        for _ in 0..<count {
-//            let message = randomMessage(allowedSenders: senders)
-//            messages.append(message)
-//        }
-//        completion(messages)
-//    }
+    //        let randomNumberSender = Int(arc4random_uniform(UInt32(allowedSenders.count)))
+    //        
+    //        let uniqueID = NSUUID().uuidString
+    //        let sender = allowedSenders[randomNumberSender]
+    //        let date = dateAddingRandomTime()
+    //        
+    //        switch randomMessageType() {
+    //        case .Text:
+    //            let randomSentence = Lorem.sentence()
+    //            return MockMessage(text: randomSentence, sender: sender, messageId: uniqueID, date: date)
+    //        case .AttributedText:
+    //            let randomSentence = Lorem.sentence()
+    //            let attributedText = attributedString(with: randomSentence)
+    //            return MockMessage(attributedText: attributedText, sender: senders[randomNumberSender], messageId: uniqueID, date: date)
+    ////        case .Photo:
+    ////            let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
+    ////            let image = messageImages[randomNumberImage]
+    ////            return MockMessage(image: image, sender: sender, messageId: uniqueID, date: date)
+    ////        case .Video:
+    ////            let randomNumberImage = Int(arc4random_uniform(UInt32(messageImages.count)))
+    ////            let image = messageImages[randomNumberImage]
+    ////            return  MockMessage(image: image, sender: sender, messageId: uniqueID, date: date)
+    //        case .Emoji:
+    //            let randomNumberEmoji = Int(arc4random_uniform(UInt32(emojis.count)))
+    //            return MockMessage(emoji: emojis[randomNumberEmoji], sender: sender, messageId: uniqueID, date: date)
+    //        case .Location:
+    //            let randomNumberLocation = Int(arc4random_uniform(UInt32(locations.count)))
+    //            return MockMessage(location: locations[randomNumberLocation], sender: sender, messageId: uniqueID, date: date)
+    //        case .Url:
+    //            return MockMessage(text: "https://github.com/MessageKit", sender: sender, messageId: uniqueID, date: date)
+    //        case .Phone:
+    //            return MockMessage(text: "123-456-7890", sender: sender, messageId: uniqueID, date: date)
+    //        case .Custom:
+    //            return MockMessage(custom: "Someone left the conversation", sender: system, messageId: uniqueID, date: date)
+    //        case .Photo:
+    //            <#code#>
+    //        }
+    //   }
     
-//    func getAdvancedMessages(count: Int, completion: ([MockMessage]) -> Void) {
-//        var messages: [MockMessage] = []
-//        // Enable Custom Messages
-//        UserDefaults.standard.set(true, forKey: "Custom Messages")
-//        for _ in 0..<count {
-//            let message = randomMessage(allowedSenders: senders)
-//            messages.append(message)
-//        }
-//        completion(messages)
-//    }
+    //    func getMessages(count: Int, completion: ([MockMessage]) -> Void) {
+    //        var messages: [MockMessage] = []
+    //        // Disable Custom Messages
+    //        UserDefaults.standard.set(true, forKey: "Custom Messages")
+    //        for _ in 0..<count {
+    //            let message = randomMessage(allowedSenders: senders)
+    //            messages.append(message)
+    //        }
+    //        completion(messages)
+    //    }
     
-//    func getMessages(count: Int, allowedSenders: [Sender], completion: ([MockMessage]) -> Void) {
-//        var messages: [MockMessage] = []
-//        // Disable Custom Messages
-//        UserDefaults.standard.set(true, forKey: "Custom Messages")
-//        for _ in 0..<count {
-//            let message = randomMessage(allowedSenders: allowedSenders)
-//            messages.append(message)
-//        }
-//        completion(messages)
-//    }
+    //    func getAdvancedMessages(count: Int, completion: ([MockMessage]) -> Void) {
+    //        var messages: [MockMessage] = []
+    //        // Enable Custom Messages
+    //        UserDefaults.standard.set(true, forKey: "Custom Messages")
+    //        for _ in 0..<count {
+    //            let message = randomMessage(allowedSenders: senders)
+    //            messages.append(message)
+    //        }
+    //        completion(messages)
+    //    }
+    
+    //    func getMessages(count: Int, allowedSenders: [Sender], completion: ([MockMessage]) -> Void) {
+    //        var messages: [MockMessage] = []
+    //        // Disable Custom Messages
+    //        UserDefaults.standard.set(true, forKey: "Custom Messages")
+    //        for _ in 0..<count {
+    //            let message = randomMessage(allowedSenders: allowedSenders)
+    //            messages.append(message)
+    //        }
+    //        completion(messages)
+    //    }
     
     func getAvatarFor(sender: Sender) -> Avatar {
         let firstName = sender.displayName.components(separatedBy: " ").first
@@ -212,11 +212,11 @@ final internal class SampleData {
         let initials = "\(firstName?.first ?? "A")\(lastName?.first ?? "A")"
         switch sender {
         case nathan:
-            return Avatar(image: #imageLiteral(resourceName: "image1"), initials: initials)
+            return Avatar(image: UIImage(named: "image1", in: Bundle(for: SampleData.self), with: nil)!, initials: initials)
         case steven:
-            return Avatar(image: #imageLiteral(resourceName: "Image2"), initials: initials)
+            return Avatar(image: UIImage(named: "Image2", in: Bundle(for: SampleData.self), with: nil)!, initials: initials)
         case wu:
-            return Avatar(image: #imageLiteral(resourceName: "user3"), initials: initials)
+            return Avatar(image: UIImage(named: "user3", in: Bundle(for: SampleData.self), with: nil)!, initials: initials)
         case system:
             return Avatar(image: nil, initials: "SS")
         default:

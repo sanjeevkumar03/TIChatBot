@@ -12,7 +12,7 @@ protocol QuickReplySSOCollectionViewCellDelegate {
     func didTappedQuickReplySSOButton(ssoUrl:String)
 }
 
- class QuickReplySSOCollectionViewCell: UICollectionViewCell {
+class QuickReplySSOCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var button: UIButton!
     
@@ -23,8 +23,8 @@ protocol QuickReplySSOCollectionViewCellDelegate {
     var quickReplyButton:QuickReply?
     var ssoUrl:String?
     
-
-//    
+    
+    //    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubviews()
@@ -43,7 +43,7 @@ protocol QuickReplySSOCollectionViewCellDelegate {
         super.layoutSubviews()
         
     }
-  
+    
     @IBAction func buttonAction(_ sender: Any) {
         print("buutttoTapped")
         self.delegate?.didTappedQuickReplySSOButton(ssoUrl: ssoUrl ?? "")

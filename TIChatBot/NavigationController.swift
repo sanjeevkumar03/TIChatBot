@@ -29,7 +29,7 @@ final class NavigationController: UINavigationController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return viewControllers.last?.preferredStatusBarStyle ?? .lightContent
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.isTranslucent = false
@@ -63,5 +63,5 @@ final class NavigationController: UINavigationController {
             }
         }
     }
-
+    
 }

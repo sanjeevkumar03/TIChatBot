@@ -19,23 +19,23 @@ class SettingViewControllerViewController: UIViewController {
     
     var NavTitleImg:UIImage = UIImage(named: "user1")!
     var navTitleImgView:UIImageView?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       // self.navigationItem.title = "Settings"
+        // self.navigationItem.title = "Settings"
         self.addNavTitleImage()
         self.channelContainer.roundedShadowView(cornerRadius: 5, borderWidth: 1, borderColor: .darkGray)
         self.languageContainer.roundedShadowView(cornerRadius: 5, borderWidth: 1, borderColor: .darkGray)
-
+        
         // Do any additional setup after loading the view.
     }
     
     func addNavTitleImage()  {
-        let navHeight = self.navigationController!.navigationBar.frame.size.height - 30
-        let navWidth = self.navigationController!.navigationBar.frame.size.width - 50
-         navTitleImgView = UIImageView(frame: CGRect(x: 0, y: 0, width: navWidth, height: navHeight))
+        let navHeight = navigationController?.navigationBar.frame.size.height ?? 100 - 30
+        let navWidth = navigationController?.navigationBar.frame.size.width ?? 320 - 50
+        navTitleImgView = UIImageView(frame: CGRect(x: 0, y: 0, width: navWidth, height: navHeight))
         navTitleImgView?.contentMode = .scaleAspectFit
-         navTitleImgView?.image = self.NavTitleImg
+        navTitleImgView?.image = self.NavTitleImg
         navigationItem.titleView = navTitleImgView
     }
     
@@ -45,31 +45,33 @@ class SettingViewControllerViewController: UIViewController {
     
     @IBAction func languageBtnClicked(_ sender: UIButton) {
         self.presentListingPopover(forChannel: false, sender: sender)
-
+        
     }
     
     func presentListingPopover(forChannel:Bool, sender: UIButton) {
-       // if let button = sender as? UIBarButtonItem {
-            let popoverContentController = self.storyboard!.instantiateViewController(withIdentifier: "ListingPopoverViewController") as! ListingPopoverViewController
-            popoverContentController.modalPresentationStyle = .popover
+        // if let button = sender as? UIBarButtonItem {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let popoverContentController = storyboard?.instantiateViewController(withIdentifier: "ListingPopoverViewController") as! ListingPopoverViewController
+        popoverContentController.modalPresentationStyle = .popover
         popoverContentController.preferredContentSize = CGSize(width: 300, height: forChannel ? 100: (self.languageArray.count * 30 + 20 ))
-            popoverContentController.delegate = self
-            print(self.languageArray)
-            popoverContentController.languageArray = self.languageArray
-            popoverContentController.isChannelSelected = forChannel
-
-            
-            if let popoverPresentationController = popoverContentController.popoverPresentationController {
-                   popoverPresentationController.permittedArrowDirections = .up
-                   popoverPresentationController.backgroundColor = UIColor.black.withAlphaComponent(0.65)
-                   popoverPresentationController.sourceView = sender
-                  // popoverPresentationController.barButtonItem = button
-                   popoverPresentationController.delegate = self
-                   present(popoverContentController, animated: true, completion: nil)
-               }
-     //   }
+        popoverContentController.delegate = self
+        print(self.languageArray)
+        popoverContentController.languageArray = self.languageArray
+        popoverContentController.isChannelSelected = forChannel
+        
+        
+        if let popoverPresentationController = popoverContentController.popoverPresentationController {
+            popoverPresentationController.permittedArrowDirections = .up
+            popoverPresentationController.backgroundColor = UIColor.black.withAlphaComponent(0.65)
+            popoverPresentationController.sourceView = sender
+            // popoverPresentationController.barButtonItem = button
+            popoverPresentationController.delegate = self
+            present(popoverContentController, animated: true, completion: nil)
+        }
+        //   }
     }
-  
+    
 }
 
 

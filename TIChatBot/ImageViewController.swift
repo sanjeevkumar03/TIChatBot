@@ -10,12 +10,12 @@ import UIKit
 import AlamofireImage
 
 class ImageViewController: UIViewController, UIScrollViewDelegate {
- @IBOutlet weak var imageView: UIImageView!
- @IBOutlet weak var scrolView: UIScrollView!
- @IBOutlet weak var cancel: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var scrolView: UIScrollView!
+    @IBOutlet weak var cancel: UIButton!
     
- var tap:UITapGestureRecognizer!
-
+    var tap:UITapGestureRecognizer!
+    
     @IBOutlet weak var imgViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var imgViewTopCnstraint: NSLayoutConstraint!
     var imgUrl:String?
@@ -23,11 +23,11 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-               scrolView.delegate = self
-               scrolView.minimumZoomScale = 1.0
-               scrolView.maximumZoomScale = 10.0
-               addSingleTapGestureInImage()
-               setImage()
+        scrolView.delegate = self
+        scrolView.minimumZoomScale = 1.0
+        scrolView.maximumZoomScale = 10.0
+        addSingleTapGestureInImage()
+        setImage()
     }
     
     func setImage() {
@@ -48,13 +48,13 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-                return imageView
-            }
+        return imageView
+    }
     
     func addSingleTapGestureInImage() {
         tap = UITapGestureRecognizer(target: self, action: #selector(ImageViewController.handleTap(_:)))
         tap.numberOfTapsRequired = 1;
-
+        
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(tap)
     }
@@ -62,9 +62,9 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-//        imgViewBottomConstraint.constant = imgViewBottomConstraint.constant == 70 ? 0:70
-//        imgViewTopCnstraint.constant = imgViewTopCnstraint.constant == 70 ? 0:70
-//        cancel.isHidden = !cancel.isHidden
+        //        imgViewBottomConstraint.constant = imgViewBottomConstraint.constant == 70 ? 0:70
+        //        imgViewTopCnstraint.constant = imgViewTopCnstraint.constant == 70 ? 0:70
+        //        cancel.isHidden = !cancel.isHidden
     }
     
 }
