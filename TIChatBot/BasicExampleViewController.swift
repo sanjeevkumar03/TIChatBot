@@ -296,7 +296,7 @@ final class BasicExampleViewController: ChatViewController {
     
     
     @objc func methodOfReceivedNotification(notification: Notification) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle(for: BasicExampleViewController.self))
         let vc = storyboard.instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
         vc.image = notification.object as? UIImage
         self.present(vc, animated: true, completion: nil)
@@ -420,7 +420,7 @@ final class BasicExampleViewController: ChatViewController {
     }
     
     func moveToCustomeFeedback()  {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:Bundle(for: BasicExampleViewController.self))
         let feedbackSurveyVC = storyBoard.instantiateViewController(withIdentifier: "FeedbackSurveyVC") as! FeedbackSurveyVC
         feedbackSurveyVC.npsSettings = self.config?.nps_settings
         feedbackSurveyVC.NavTitleImg = self.navTitleImgView!.image!
@@ -428,7 +428,7 @@ final class BasicExampleViewController: ChatViewController {
     }
     
     func moveToNormalFeedback()  {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:Bundle(for: BasicExampleViewController.self))
         let normalFeedbackVC = storyBoard.instantiateViewController(withIdentifier: "NormalFeedbackVC") as! NormalFeedbackVC
         normalFeedbackVC.NavTitleImg = self.navTitleImgView!.image!
         
@@ -500,7 +500,7 @@ final class BasicExampleViewController: ChatViewController {
     
     @IBAction func menuBtnClicked(_ sender: Any) {
         if let button = sender as? UIBarButtonItem {
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:Bundle(for: BasicExampleViewController.self))
             
             let popoverContentController = storyboard?.instantiateViewController(withIdentifier: "SettingPopoverViewController") as! SettingPopoverViewController
             
@@ -538,7 +538,7 @@ extension BasicExampleViewController: SettingPopoverVCDelegate, UIPopoverPresent
     
     func didSelectectOption(index:Int){
         if index == 0{
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:Bundle(for: BasicExampleViewController.self))
             
             let settingViewController = storyBoard.instantiateViewController(withIdentifier: "SettingViewControllerViewController") as! SettingViewControllerViewController
             settingViewController.NavTitleImg = self.navTitleImgView!.image!
@@ -588,7 +588,7 @@ extension BasicExampleViewController: QuickReplyButtonCollectionViewCellDelegate
     func didTappedQuickReplySSOButton(ssoUrl: String) {
         print("SSSO Tappped")
         self.isTypedMsg = false
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:Bundle(for: BasicExampleViewController.self))
         
         let popOverAlertVC = storyBoard.instantiateViewController(withIdentifier: "SSOWebVCViewController") as! SSOWebVCViewController
         

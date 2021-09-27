@@ -59,7 +59,7 @@ class FeedbackSurveyVC: UIViewController {
     var isAnswersTag = false
     var isRadioShow = true
     
-    var NavTitleImg:UIImage = UIImage(named: "user1")!
+    var NavTitleImg:UIImage = UIImage(named: "user1", in: Bundle(for: BasicExampleViewController.self), compatibleWith: nil)!
     var navTitleImgView:UIImageView?
     var selectedAnswerTagArr = [IndexPath]()
     var selectedAnswerTagValueArr = [String]()
@@ -367,7 +367,7 @@ class FeedbackSurveyVC: UIViewController {
     }
     
     @IBAction func closeBtnAction(_ sender: Any) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:Bundle(for: BasicExampleViewController.self))
         
         let transcriptViewController = storyboard?.instantiateViewController(withIdentifier: "TranscriptViewController") as! TranscriptViewController
         transcriptViewController.NavTitleImg = self.navTitleImgView!.image!

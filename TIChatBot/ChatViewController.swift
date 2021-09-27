@@ -739,7 +739,7 @@ extension ChatViewController: MessageCellDelegate {
             print(media)
             
         case .photo(let media):
-            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle(for: BasicExampleViewController.self))
             let vc = storyboard.instantiateViewController(withIdentifier: "ImageViewController") as! ImageViewController
             vc.imgUrl = (media.urlStr!)
             self.present(vc, animated: true, completion: nil)

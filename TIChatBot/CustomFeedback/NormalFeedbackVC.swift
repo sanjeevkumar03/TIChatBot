@@ -22,7 +22,7 @@ class NormalFeedbackVC: UIViewController {
     // @IBOutlet weak var feedTextViewContainerHC: NSLayoutConstraint!
     
     var isAdditionalFeedback = false
-    var NavTitleImg:UIImage = UIImage(named: "user1")!
+    var NavTitleImg:UIImage = UIImage(named: "user1", in: Bundle(for: BasicExampleViewController.self), compatibleWith: nil)!
     var navTitleImgView:UIImageView?
     
     
@@ -89,7 +89,7 @@ class NormalFeedbackVC: UIViewController {
     }
     
     @IBAction func closeBtnAction(_ sender: Any) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:Bundle(for: BasicExampleViewController.self))
         let transcriptViewController = storyboard?.instantiateViewController(withIdentifier: "TranscriptViewController") as! TranscriptViewController
         transcriptViewController.NavTitleImg = self.navTitleImgView!.image!
         self.navigationController?.pushViewController(transcriptViewController, animated: true)

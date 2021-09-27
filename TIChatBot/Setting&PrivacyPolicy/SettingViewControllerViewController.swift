@@ -17,7 +17,7 @@ class SettingViewControllerViewController: UIViewController {
     var languageSelected = ""
     var channelSelected = ""
     
-    var NavTitleImg:UIImage = UIImage(named: "user1")!
+    var NavTitleImg:UIImage = UIImage(named: "user1", in: Bundle(for: BasicExampleViewController.self), compatibleWith: nil)!
     var navTitleImgView:UIImageView?
     
     override func viewDidLoad() {
@@ -50,7 +50,7 @@ class SettingViewControllerViewController: UIViewController {
     
     func presentListingPopover(forChannel:Bool, sender: UIButton) {
         // if let button = sender as? UIBarButtonItem {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:Bundle(for: BasicExampleViewController.self))
         
         let popoverContentController = storyboard?.instantiateViewController(withIdentifier: "ListingPopoverViewController") as! ListingPopoverViewController
         popoverContentController.modalPresentationStyle = .popover
